@@ -3,7 +3,11 @@ import { useSpring, animated } from '@react-spring/web';
 
 import styles from './Draggable.module.css';
 
-const Draggable = () => {
+export interface DraggableProps {}
+
+const Draggable: React.FC<DraggableProps> = ({
+  ...props
+}) => {
   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
 
   const bind = useDrag(({ offset: [x, y] }) => {
