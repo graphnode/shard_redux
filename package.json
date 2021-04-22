@@ -34,12 +34,6 @@
     "commit": "cz",
     "release": "standard-version"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

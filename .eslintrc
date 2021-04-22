@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "react-app", 
+    "react-app/jest"
+  ],
+  "rules": {
+    "no-trailing-spaces": "warn",
+    "indent": ["warn", 2],
+    "no-mixed-spaces-and-tabs": "warn",
+    "quotes": ["error", "single"],
+    "semi": "error",
+    "semi-style": ["error", "last"],
+    "comma-dangle": ["error", "always-multiline"],
+    "max-len": ["warn", { "code": 120 }],
+    "object-curly-spacing": ["warn", "always"]
+  },
+  "ignorePatterns": [
+    "node_modules/", 
+    "build/"
+  ]
+ }

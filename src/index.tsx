@@ -5,12 +5,9 @@ import './index.css';
 
 import App from './components/App';
 
-
-process.env.STUFF = 'x';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
