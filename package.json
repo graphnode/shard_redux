@@ -2,6 +2,7 @@
   "name": "shard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/shard",
   "dependencies": {
     "@react-three/cannon": "^1.1.0",
     "@react-three/drei": "^4.1.8",
