@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
-import Draggable, { DraggableProps } from '../components/Draggable';
+import Draggable, { DraggableProps } from './Draggable';
 
 export default {
   title: 'Draggable',
