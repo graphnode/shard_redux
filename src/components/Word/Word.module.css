@@ -1,0 +1,48 @@
+:root {
+  --first: rgba(230, 46, 0, 0.4);
+  --second: rgba(255, 104, 77, 0.4);
+}
+
+.Word {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+
+  display: inline-block;
+  white-space: nowrap;
+
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  position: relative;
+  cursor: grab;
+  touch-action: none;
+}
+
+.WordActive {
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 1px #fff, 
+      0 0 2px #fff, 
+      0 0 3px var(--first), 
+      0 0 4px var(--first), 
+      0 0 5px var(--first), 
+      0 0 6px var(--first), 
+      0 0 7px var(--first);
+  }
+  to {
+    text-shadow: 
+      0 0 2px #fff, 
+      0 0 3px var(--second), 
+      0 0 4px var(--second), 
+      0 0 5px var(--second), 
+      0 0 6px var(--second), 
+      0 0 7px var(--second),
+      0 0 8px var(--second);
+  }
+}
