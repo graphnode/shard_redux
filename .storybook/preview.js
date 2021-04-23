@@ -7,4 +7,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  backgrounds: {
+    default: 'shard',
+    values: [
+      { name: 'shard', value: '#2c313d' },
+      { name: 'light', value: '#f8f8f8' },
+      { name: 'dark',  value: '#333333' },
+    ],
+  },
 }

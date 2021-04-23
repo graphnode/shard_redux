@@ -14,7 +14,7 @@
     "max-len": ["warn", { "code": 120 }],
     "object-curly-spacing": ["warn", "always"],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "off"
   },
   "ignorePatterns": [
     "node_modules/", 

@@ -3,6 +3,7 @@ import Draggable from '../Draggable';
 
 import { ReactComponent as GitHubIcon } from '../../assets/github.svg';
 
+import './Fonts.css';
 import styles from './App.module.css';
 
 const App = () => (
