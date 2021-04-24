@@ -29,10 +29,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    margin: 0;
     font-family: 'Nunito', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    color: white;
+
+    margin: 0; padding: 0;
   }
 `;
 
@@ -40,6 +43,16 @@ export const App = styled.div`
   background-color: #2C313D;
   min-height: 100vh;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: columm;
+  flex-wrap: nowrap;
+
+  main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
 
   & svg {
     fill: currentColor;

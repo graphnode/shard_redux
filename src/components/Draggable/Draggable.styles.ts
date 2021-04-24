@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { animated } from '@react-spring/web';
 
-export const Draggable = styled(animated.div)<{ dragging: boolean }>`
+export const Draggable = styled(animated.div)<{ grabbed?: any }>`
   display: inline-block;
 
   background: #91c9f9;
@@ -13,8 +13,8 @@ export const Draggable = styled(animated.div)<{ dragging: boolean }>`
   touch-action: none;
   will-change: transform;
   user-select: none;
-
-  ${({ dragging }) => dragging ? css`
+  
+  ${(props) => props.grabbed ? css`
     /* pointer-events: none; */
     cursor: grabbing;
   ` : css`

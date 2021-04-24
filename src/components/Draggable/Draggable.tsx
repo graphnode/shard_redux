@@ -19,14 +19,14 @@ const Draggable : React.FC<DraggableProps> = (props) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const dropRef = useRef<Element | null>(null);
 
-  const [dragging, setDragging] = useState(false);
+  const [grabbed, setGrabbed] = useState(false);
 
   const [styles, api] = useSpring(() => ({ x: 0, y: 0 }));
 
   const bind = useDrag(({ down, offset: [ox, oy], last }) => {
     api.start({ x: ox, y: oy, config: { tension: 250 } });
 
-    setDragging(down);
+    setGrabbed(down);
 
     const { x, y, width, height } = ref.current!.getBoundingClientRect();
 
@@ -47,14 +47,12 @@ const Draggable : React.FC<DraggableProps> = (props) => {
   });
 
   return (
-    <>
-      <S.Draggable
-        ref={ref}
-        dragging={dragging}
-        style={styles}
-        {...bind()}
-      />
-    </>
+    <S.Draggable
+      ref={ref}
+      grabbed={grabbed ? 'true' : undefined}
+      style={styles}
+      {...bind()}
+    />
   );
 };
 

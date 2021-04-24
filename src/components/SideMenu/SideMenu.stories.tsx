@@ -1,6 +1,6 @@
-import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+
+import { MemoryRouter as Router } from 'react-router-dom';
 
 import { ReactComponent as HomeIcon } from '../../assets/home-outline.svg';
 import { ReactComponent as DatabaseIcon } from '../../assets/database-outline.svg';
@@ -11,6 +11,10 @@ import SideMenu, { SideMenuProps } from './SideMenu';
 export default {
   title: 'SideMenu',
   component: SideMenu,
+  parameters: {
+    layout: 'fullscreen',
+  },
+  decorators: [(Story) => <Router><Story/></Router>],
 } as Meta;
 
 const Template: Story<SideMenuProps> = (args) => <SideMenu {...args} />;
@@ -18,8 +22,8 @@ const Template: Story<SideMenuProps> = (args) => <SideMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   options: [
-    { title: 'Home', icon: HomeIcon, onActivate: action('onActivate') },
-    { title: 'Database', icon: DatabaseIcon, onActivate: action('onActivate') },
-    { title: 'Chat', icon: ChatIcon, onActivate: action('onActivate') },
+    { title: 'Home', icon: HomeIcon, path: '/' },
+    { title: 'Database', icon: DatabaseIcon, path: '/database' },
+    { title: 'Chat', icon: ChatIcon, path: '/chat' },
   ],
 };

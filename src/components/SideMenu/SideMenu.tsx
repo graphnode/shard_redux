@@ -1,11 +1,11 @@
-import { FunctionComponent, SVGProps, useState } from 'react';
+import { FunctionComponent, SVGProps } from 'react';
 
 import * as S from './SideMenu.styles';
 
 type OptionItem = {
   title?: string;
   icon: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
-  onActivate?: () => void;
+  path?: string;
 };
 
 export interface SideMenuProps {
@@ -14,34 +14,21 @@ export interface SideMenuProps {
 }
 
 const SideMenu = ({ options } : SideMenuProps) => {
-  const [active, setActive] = useState<number | null>(null);
-
   if (!options)
     return null;
 
-  const handleClick = (option : OptionItem, i : number) => {
-    if (active === i)
-      return;
-
-    setActive(i);
-    option.onActivate?.();
-  };
-
   return (
     <S.Container>
-      <S.OptionList>
+      <S.OrderedList>
         { options.map((option, i) => (
-          <S.Option
-            key={i}
-            active={active === i}
-            onClick={() => handleClick(option, i) }
-          >
-            <option.icon />
-            {option.title && <span>{option.title}</span>}
-          </S.Option>
+          <S.ListItem key={i}>
+            <S.NavLink to={option.path || ''} exact={true} activeClassName="active">
+              <option.icon />
+              {option.title && <span>{option.title}</span>}
+            </S.NavLink>
+          </S.ListItem>
         ))}
-      </S.OptionList>
-      <S.Line />
+      </S.OrderedList>
     </S.Container>
   );
 };
