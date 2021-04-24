@@ -24,7 +24,7 @@ const Feed : React.FC<FeedProps> = ({ messages, autoScroll }) => {
       document.fonts.ready.then(() => scrollToBottom());
       setAtBottom(true);
     }
-  }, [autoScroll]);
+  }, []);
 
   useEffect(() => {
     if (autoScroll && atBottom)
