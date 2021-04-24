@@ -9,7 +9,7 @@ import styles from './App.module.css';
 const App = () => (
   <div className={styles.App}>
     <SideMenu />
-    <Draggable initialPosition={{ x: 150, y: 50 }} />
+    <Draggable />
 
     <a href={process.env.REACT_APP_GITHUB_URL} target="_blank" rel="noreferrer" className={styles.GitHubLink}>
       <GitHubIcon />

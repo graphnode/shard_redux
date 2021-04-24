@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 
 import { Story, Meta } from '@storybook/react';
-import range from '../../utils/range';
+import range from 'lodash-es/range';
 
 import Feed, { FeedProps } from './Feed';
 
