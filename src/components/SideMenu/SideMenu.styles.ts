@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.nav`
   position: absolute;
   top: 0; left: 0; bottom: 0;
   width: 6rem;
@@ -12,15 +12,26 @@ export const Container = styled.div`
   gap: 1rem;
 `;
 
-export const Option = styled.div<{ active: boolean }>`
+export const OptionList = styled.ol`
+  margin: 0;
+  padding: 0;
+`;
+
+export const Option = styled.li<{ active: boolean }>`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 5rem; height: 5rem;
-  color: #484F61;
-  border-radius: 0.5rem;
-  cursor: pointer;
 
+  margin: 0; padding: 0;
+  width: 5rem; height: 5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  font-size: 0.9rem;
+  color: #484F61;
+
+  cursor: pointer;
+    
   &:hover {
     background-color: #323846;
   }
@@ -28,11 +39,15 @@ export const Option = styled.div<{ active: boolean }>`
   ${({ active }) => active && css`
     color: white;
     background-color: #4c566b;
+
+    & span {
+      font-weight: bold;
+    }
   `}
 
   & svg {
     fill: currentColor;
-    width: 3rem; height: 3rem;
+    width: 2rem; height: 2rem;
   }
 `;
 

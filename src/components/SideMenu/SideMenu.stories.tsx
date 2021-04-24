@@ -18,8 +18,8 @@ const Template: Story<SideMenuProps> = (args) => <SideMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   options: [
-    { icon: HomeIcon, onActivate: action('onActivate') },
-    { icon: DatabaseIcon, onActivate: action('onActivate') },
-    { icon: ChatIcon, onActivate: action('onActivate') },
+    { title: 'Home', icon: HomeIcon, onActivate: action('onActivate') },
+    { title: 'Database', icon: DatabaseIcon, onActivate: action('onActivate') },
+    { title: 'Chat', icon: ChatIcon, onActivate: action('onActivate') },
   ],
 };
