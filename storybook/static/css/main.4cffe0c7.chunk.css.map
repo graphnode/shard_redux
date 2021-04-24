@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.4cffe0c7.chunk.css","sources":["webpack:///src/components/Draggable/Draggable.module.css"],"sourcesContent":[".draggable {\n  background: #91c9f9;\n  border: 3px solid #335C81;\n  border-radius: 1rem;\n  height: 3rem;\n  width: 3rem;\n}\n"],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;;","sourceRoot":""}
