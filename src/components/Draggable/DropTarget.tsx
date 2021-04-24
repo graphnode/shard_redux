@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import './Draggable.css';
+import * as S from './Draggable.styles';
 
 export interface DropTargetProps extends Pick<React.HTMLAttributes<HTMLDivElement>, 'className' | 'style'> {}
 
@@ -9,11 +9,12 @@ const DropTarget : React.FC<DropTargetProps> = ({ style, className }) => {
   const [drop, setDrop] = useState(false);
 
   return (
-    <div
+    <S.DropTarget
       onDragEnter={() => setOver(true)}
       onDrop={() => setDrop(true)}
       onDragLeave={() => setOver(false)}
-      className={`DropTarget ${(over ? 'DropTargetOver' : '')} ${(drop ? 'DropTargetDrop' : '')} ${(className || '')}`}
+      over={over} drop={drop}
+      className={className}
       style={style}
     />
   );

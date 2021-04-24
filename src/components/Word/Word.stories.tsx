@@ -2,8 +2,6 @@ import { Story, Meta } from '@storybook/react';
 
 import Word, { WordProps } from './Word';
 
-import '../App/Fonts.css';
-
 export default {
   title: 'Word',
   component: Word,

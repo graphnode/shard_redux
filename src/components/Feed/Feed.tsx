@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-
-import '../App/Fonts.css';
-import styles from './Feed.module.css';
+import * as S from './Feed.styles';
 
 export interface FeedProps {
   /** Messages to show on the feed. */
@@ -39,10 +37,10 @@ const Feed : React.FC<FeedProps> = ({ messages, autoScroll }) => {
   };
 
   return (
-    <div ref={feedRef} onScroll={handleScroll} className={styles.Feed}>
-      { messages?.map((message, i) => <div key={i} className={styles.Message}>{message}</div>)}
-      <div ref={bottomRef} className={styles.Bottom}></div>
-    </div>
+    <S.Container ref={feedRef} onScroll={handleScroll} >
+      { messages?.map((message, i) => <S.Message key={i} >{message}</S.Message>)}
+      <S.BottomAnchor ref={bottomRef} />
+    </S.Container>
   );
 };
 

@@ -1,4 +1,6 @@
-.sideMenu {
+import styled, { css } from 'styled-components';
+
+export const Container = styled.div`
   position: absolute;
   top: 0; left: 0; bottom: 0;
   width: 6rem;
@@ -8,9 +10,9 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
-}
+`;
 
-.sideMenuButton {
+export const Option = styled.div<{ active: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,26 +20,26 @@
   color: #484F61;
   border-radius: 0.5rem;
   cursor: pointer;
-}
 
-.sideMenuButton:hover {
-  background-color: #323846;
-}
+  &:hover {
+    background-color: #323846;
+  }
 
-.sideMenuButtonActive {
-  color: white;
-  background-color: #4c566b;
-}
+  ${({ active }) => active && css`
+    color: white;
+    background-color: #4c566b;
+  `}
 
-.sideMenuButton svg {
-  fill: currentColor;
-  width: 3rem; height: 3rem;
-}
+  & svg {
+    fill: currentColor;
+    width: 3rem; height: 3rem;
+  }
+`;
 
-.sideMenuLine {
+export const Line = styled.div`
   position: absolute;
   top: 2rem; bottom: 2rem;
   right: 0;
   width: 0.05rem;
   background-color: #484F61;
-}
+`;

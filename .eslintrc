@@ -13,6 +13,7 @@
     "comma-dangle": ["error", "always-multiline"],
     "max-len": ["warn", { "code": 120 }],
     "object-curly-spacing": ["warn", "always"],
+    "eol-last": ["warn", "always"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off"
   },

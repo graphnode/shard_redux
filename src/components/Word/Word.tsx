@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useGesture } from 'react-use-gesture';
-import { useSpring, animated } from '@react-spring/web';
+import { useSpring } from '@react-spring/web';
 
-import styles from './Word.module.css';
+import * as S from './Word.styles';
 
 export interface WordProps {}
 
@@ -21,9 +21,9 @@ const Word : React.FC<WordProps> = ({ children }) => {
   });
 
   return (
-    <animated.span className={`${styles.Word}  ${active?styles.WordActive:''}`} style={{ x, y }} {...bind()}>
+    <S.Word active={active} style={{ x, y }} {...bind()}>
       [{children}]
-    </animated.span>
+    </S.Word>
   );
 };
 

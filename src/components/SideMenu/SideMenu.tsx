@@ -1,6 +1,6 @@
 import { FunctionComponent, SVGProps, useState } from 'react';
 
-import styles from './SideMenu.module.css';
+import * as S from './SideMenu.styles';
 
 type OptionItem = {
   icon: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
@@ -27,18 +27,18 @@ const SideMenu = ({ options } : SideMenuProps) => {
   };
 
   return (
-    <div className={styles.sideMenu}>
+    <S.Container>
       { options.map((option, i) => (
-        <div
+        <S.Option
           key={i}
-          className={styles.sideMenuButton + ' ' + (active === i && styles.sideMenuButtonActive)}
+          active={active === i}
           onClick={() => handleClick(option, i) }
         >
           <option.icon />
-        </div>
+        </S.Option>
       ))}
-      <div className={styles.sideMenuLine}/>
-    </div>
+      <S.Line />
+    </S.Container>
   );
 };
 

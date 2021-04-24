@@ -3,18 +3,19 @@ import Draggable from '../Draggable';
 
 import { ReactComponent as GitHubIcon } from '../../assets/github.svg';
 
-import './Fonts.css';
-import styles from './App.module.css';
+import * as S from './App.styles';
 
 const App = () => (
-  <div className={styles.App}>
+  <S.App>
+    <S.GlobalStyle />
+
     <SideMenu />
     <Draggable />
 
-    <a href={process.env.REACT_APP_GITHUB_URL} target="_blank" rel="noreferrer" className={styles.GitHubLink}>
+    <S.GitHubLink href={process.env.REACT_APP_GITHUB_URL} target="_blank" rel="noreferrer">
       <GitHubIcon />
-    </a>
-  </div>
+    </S.GitHubLink>
+  </S.App>
 );
 
 export default App;

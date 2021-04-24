@@ -1,9 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDrag } from 'react-use-gesture';
-import { useSpring, animated } from '@react-spring/web';
+import { useSpring } from '@react-spring/web';
 import throttle from 'lodash-es/throttle';
 
-import './Draggable.css';
+import * as S from './Draggable.styles';
 
 const sendEvent = (type : string, target : Element) => {
   target.dispatchEvent(new Event(type, { bubbles: true, cancelable: false }));
@@ -19,14 +19,19 @@ const Draggable : React.FC<DraggableProps> = (props) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const dropRef = useRef<Element | null>(null);
 
+  const [dragging, setDragging] = useState(false);
+
   const [styles, api] = useSpring(() => ({ x: 0, y: 0 }));
 
-  const bind = useDrag(({ offset: [ox, oy], last }) => {
+  const bind = useDrag(({ down, offset: [ox, oy], last }) => {
     api.start({ x: ox, y: oy, config: { tension: 250 } });
+
+    setDragging(down);
 
     const { x, y, width, height } = ref.current!.getBoundingClientRect();
 
-    const dropEl = document.elementFromPoint(x + width / 2, y + height / 2);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [_, dropEl] = document.elementsFromPoint(x + width / 2, y + height / 2);
 
     if (last && dropRef.current) {
       sendEvent('drop', dropRef.current);
@@ -42,12 +47,14 @@ const Draggable : React.FC<DraggableProps> = (props) => {
   });
 
   return (
-    <animated.div
-      ref={ref}
-      className={'Draggable'}
-      style={styles}
-      {...bind()}
-    />
+    <>
+      <S.Draggable
+        ref={ref}
+        dragging={dragging}
+        style={styles}
+        {...bind()}
+      />
+    </>
   );
 };
 

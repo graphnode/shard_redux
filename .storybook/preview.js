@@ -1,3 +1,4 @@
+import { GlobalStyle } from '../src/components/App/App.styles';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -15,4 +16,13 @@ export const parameters = {
       { name: 'dark',  value: '#333333' },
     ],
   },
-}
+};
+
+export const decorators = [
+  (Story) => (
+    <>
+      <GlobalStyle />
+      <Story />
+    </>
+  ),
+];
