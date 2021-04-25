@@ -29,7 +29,8 @@
     "commit": "cz",
     "release": "standard-version",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public -o ./build/storybook"
+    "build-storybook": "build-storybook -s public -o ./build/storybook",
+    "plop": "plop"
   },
   "browserslist": {
     "production": [
@@ -64,6 +65,7 @@
     "@types/three": "^0.127.1",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
+    "plop": "^2.7.4",
     "source-map-explorer": "^2.5.2",
     "standard-version": "^9.2.0"
   },
