@@ -2,14 +2,16 @@ import styled from 'styled-components';
 import { NavLink as BaseNavLink } from 'react-router-dom';
 
 export const Container = styled.nav`
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
-  width: 6rem;
+  width: 6rem; height: 100%;
   padding: 1rem 0;
 
+  background-color: #2C313D;
   border-right: 0.05rem solid #484F61;
 `;
 

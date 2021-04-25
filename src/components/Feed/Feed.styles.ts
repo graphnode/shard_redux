@@ -3,15 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.div`
   font-family: 'Nunito', sans-serif;
   font-size: 1.5rem;
-  color: #fff;
 
-  height: 15rem;
   padding: 1rem;
   overflow: hidden auto;
 
   border: 1px solid #335C81;
 
   display: flex;
+  flex: 1;
   flex-direction: column;
 
   scrollbar-color: #477ba8 #252832;

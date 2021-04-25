@@ -5,7 +5,7 @@
   ],
   "rules": {
     "no-trailing-spaces": "warn",
-    "indent": ["warn", 2],
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
     "no-mixed-spaces-and-tabs": "warn",
     "quotes": ["error", "single"],
     "semi": "error",

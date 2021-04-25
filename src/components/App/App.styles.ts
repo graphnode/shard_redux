@@ -1,31 +1,12 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-import NunitoRegularWoff from '../../assets/fonts/nunito-v16-latin-regular.woff';
-import NunitoRegularWoff2 from '../../assets/fonts/nunito-v16-latin-regular.woff2';
-import NunitoBoldWoff from '../../assets/fonts/nunito-v16-latin-700.woff';
-import NunitoBoldWoff2 from '../../assets/fonts/nunito-v16-latin-700.woff2';
+import FontFaces from './FontFaces.styles';
 
 export const GlobalStyle = createGlobalStyle`
-  /* nunito-regular - latin */
-  @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url(${NunitoRegularWoff2}) format('woff2'),
-        url(${NunitoRegularWoff}) format('woff');
-    font-display: block;
-  }
-
-  /* nunito-700 - latin */
-  @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''),
-        url(${NunitoBoldWoff2}) format('woff2'),
-        url(${NunitoBoldWoff}) format('woff');
-    font-display: block;
+  ${FontFaces}
+  
+  html, body, #root {
+    height: 100%;
   }
 
   body {
@@ -33,16 +14,16 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
+
     color: white;
+    background-color: #2C313D;
 
     margin: 0; padding: 0;
   }
 `;
 
 export const App = styled.div`
-  background-color: #2C313D;
-  min-height: 100vh;
-  overflow: hidden;
+  height: 100%;
 
   display: flex;
   flex-direction: columm;
@@ -51,17 +32,19 @@ export const App = styled.div`
   main {
     display: flex;
     flex: 1;
-    overflow: hidden;
+    margin-left: 6rem;
   }
 
   & svg {
     fill: currentColor;
   }
+
+  box-sizing: border-box;
 `;
 
 export const GitHubLink = styled.a`
   display: flex;
-  position: absolute;
+  position: fixed;
   top: 0; right: 0;
   justify-content: center;
   align-items: center;
