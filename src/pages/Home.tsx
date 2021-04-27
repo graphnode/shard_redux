@@ -1,48 +1,90 @@
-/* eslint-disable max-len */
 import styled from 'styled-components';
 
+import BuildingList from '../components/BuildingList';
 import Counter from '../components/Counter';
 import Feed from '../components/Feed';
+
+import useDispatch from '../hooks/useDispatch';
+import useSelector from '../hooks/useSelector';
+
+import { buyBuilding, sellBuilding } from '../reducers/buildings';
 
 const StyledPage = styled.div`
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(6, 15rem);
-  grid-template-rows: repeat(15, 10rem);
+  grid-template-columns: repeat(4, 15rem);
+  grid-template-rows: repeat(8, 10rem);
   gap: 1rem;
 
-  padding: 2rem;
+  padding: 1rem;
 `;
 
+const ThumbColor = '#4C566B';
+const TrackColor = '#fff';
+
 const StyledBox = styled.div`
-  background-color: #fff;
+  background-color: #f8f8f8;
   border-radius: 0.5rem;
+  padding: 1rem;
 
   color: #42444F;
+
+  overflow: auto;
+
+  display: flex;
+  
+  scrollbar-color: ${ThumbColor} ${TrackColor};
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: ${TrackColor};
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${ThumbColor};
+    border-radius: 1rem;
+  }
 `;
 
 const HomePage : React.FC = () => {
+  const { energy, mass } = useSelector((state) => state.resources);
+  const { generators, harvesters } = useSelector((state) => state.buildings);
+
+  const energyChange = useSelector((state) => state.buildings.generators - 1);
+  const massChange = useSelector((state) => state.buildings.harvesters);
+
+  const messages = useSelector((state) => state.messages);
+  const dispatch = useDispatch();
+
   return (
     <StyledPage>
       <StyledBox>
-        <Counter type="Mass" value="1000" change="+100" />
+        <Counter name="Mass" icon="wall" value={mass} change={massChange} />
       </StyledBox>
       <StyledBox>
-        <Counter type="Energy" value="3000" change="+100" />
+        <Counter name="Energy" icon="lightning-bolt" value={energy} change={energyChange} />
       </StyledBox>
-      <StyledBox>
-        <Counter type="Resources" value="1000" change="+100" />
+
+      <StyledBox style={{ gridColumn: '3 / 5', gridRow: '1 / 6' }}>
+        <Feed messages={messages} />
       </StyledBox>
-      <StyledBox>
-        <Counter type="Emojis" value="∞" />
-      </StyledBox>
-      <StyledBox style={{ gridColumn: '5 / 7', gridRow: '1 / 6', overflow: 'hidden' }}>
-        <Feed style={{ height: '100%' }} messages={[
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce hendrerit velit eu est luctus, in semper risus eleifend. Cras laoreet venenatis velit id tempus. Fusce maximus ipsum mollis imperdiet consequat. Nulla facilisi. Proin a dui congue, sodales justo at, luctus nisi. Duis volutpat blandit urna a efficitur. Integer ac sollicitudin quam, eu accumsan magna. Sed vitae vehicula nisi. Mauris a augue congue, sollicitudin ex vitae, accumsan sapien. Aenean feugiat commodo tellus, non finibus dui posuere in. Fusce dignissim pellentesque pharetra. Maecenas vel rhoncus felis, vel luctus odio. Vestibulum feugiat odio risus, non commodo metus maximus accumsan.',
-          'Duis porta sit amet sem a rutrum. Proin eleifend a nisi eget varius. Duis suscipit non nunc et molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce venenatis suscipit nibh, non vestibulum tellus. Vestibulum egestas sapien at magna aliquet, eget fermentum lectus blandit. Suspendisse eros augue, pretium eu mauris at, blandit aliquet nunc. Sed lobortis at augue vel pretium. Ut pellentesque tortor ante, non blandit erat maximus luctus. In consectetur aliquam leo, sit amet bibendum nisi volutpat quis. Morbi finibus est at mauris viverra dictum. Phasellus sit amet ex eget est accumsan ultricies. Aliquam velit metus, ultricies vel nisl id, vehicula semper metus. Nunc finibus lorem diam, id condimentum tellus sollicitudin nec.',
-          'Nulla eu viverra tortor. Ut bibendum metus arcu, ac consectetur orci sollicitudin laoreet. Phasellus sagittis tempor lectus. Integer tincidunt, magna et condimentum tincidunt, nisi purus molestie tellus, consequat eleifend eros tellus sit amet tortor. Ut posuere, nulla in tincidunt pulvinar, lorem ante dignissim dui, eget dapibus erat eros id dolor. Duis nec risus ut enim ultricies mattis. Vestibulum vehicula pulvinar lacus, vitae ultrices lectus vulputate non. Mauris id lorem vestibulum, tempor nibh vitae, pulvinar lorem. Sed ultrices leo leo, ac cursus est tempor ut. Vestibulum viverra in sapien ut iaculis. Vivamus ac venenatis velit.',
-          'Phasellus molestie elementum leo, in consequat enim gravida at. Sed sit amet mollis quam. Pellentesque ligula justo, malesuada in mi id, sagittis tincidunt massa. Curabitur pellentesque condimentum nulla, et pulvinar justo commodo at. Aenean sollicitudin, tellus sit amet convallis imperdiet, felis lorem fermentum nibh, non pulvinar sapien est sit amet velit. Morbi sem turpis, consequat non porttitor vel, dapibus eu lorem. Fusce tincidunt euismod urna, non condimentum quam fermentum vitae. Aliquam a erat congue, posuere urna vitae, cursus tortor. Phasellus interdum varius nisi vitae euismod. Suspendisse aliquet orci nec neque tempor ornare. Pellentesque et sapien odio. Fusce non accumsan mauris, quis vulputate ligula. Pellentesque massa lacus, aliquet vel sollicitudin ac, porttitor nec leo. Ut non pharetra dui. Sed volutpat nisl nec metus aliquet blandit.',
-          'Morbi non porta nisl. Morbi ac viverra nibh, eget lacinia tellus. Nullam eget iaculis metus, in pretium mauris. Integer in efficitur orci. Donec ac dictum metus, ut euismod neque. Phasellus placerat eget nunc sit amet suscipit. Curabitur nec tempus dolor. Aenean nisi ex, iaculis vel lorem sed, efficitur lacinia elit. In auctor ante quam, non consectetur purus varius in. Proin mollis pretium porttitor. Aenean tempor feugiat elit ut consectetur. Suspendisse potenti. Aliquam blandit a justo vel efficitur.',
+
+      <StyledBox style={{ gridColumn: '1 / 3', gridRow: '2 / 6', flexDirection: 'column' }}>
+        <BuildingList items={[
+          { name: 'Generator', price: 100, count: generators,
+            onBuy:() => dispatch(buyBuilding({ building: 'generators', price: 100 })),
+            canBuy: mass >= 100,
+            onSell:() => dispatch(sellBuilding({ building: 'generators', price: 100 })),
+            canSell: generators !== 0,
+          },
+          { name: 'Harvester', price: 50, count: harvesters,
+            onBuy:() => dispatch(buyBuilding({ building: 'harvesters', price: 50 })),
+            canBuy: mass >= 50,
+            onSell:() => dispatch(sellBuilding({ building: 'harvesters', price: 50 })),
+            canSell: harvesters !== 0,
+          },
         ]} />
       </StyledBox>
 

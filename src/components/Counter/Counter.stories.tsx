@@ -13,7 +13,7 @@ const Template: Story<CounterProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'Mass',
-  value: '26,324 t',
-  change: '+ 100 t',
+  name: 'Mass',
+  value: 26324,
+  change: 100,
 };

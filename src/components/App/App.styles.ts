@@ -1,26 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
-
-import FontFaces from './FontFaces.styles';
-
-export const GlobalStyle = createGlobalStyle`
-  ${FontFaces}
-  
-  html, body, #root {
-    height: 100%;
-  }
-
-  body {
-    font-family: 'Nunito', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
-
-    color: white;
-    background-color: #2C313D;
-
-    margin: 0; padding: 0;
-  }
-`;
+import styled from 'styled-components';
 
 export const App = styled.div`
   height: 100%;
@@ -34,12 +12,6 @@ export const App = styled.div`
     flex: 1;
     margin-left: 6rem;
   }
-
-  & svg {
-    fill: currentColor;
-  }
-
-  box-sizing: border-box;
 `;
 
 export const GitHubLink = styled.a`

@@ -1,49 +1,32 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  font-family: 'Nunito', sans-serif;
-  font-size: 1.5rem;
-
-  padding: 1rem;
-  overflow: hidden auto;
-
-  border: 1px solid #335C81;
-
+  font-size: 1.2rem;
   display: flex;
   flex: 1;
   flex-direction: column;
-
-  scrollbar-color: #477ba8 #252832;
-  scrollbar-width: thin;
-
-  &::-webkit-scrollbar {
-    width: 5px;
-    background-color: #252832;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #477ba8;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background-color: #386388;
-  }
+  justify-content: flex-start;
 `;
 
 export const Message = styled.div`
-  display: block;
   margin-top: 0.5rem;
+  flex-direction: row;
+  color: #42444F;
 
-  &:first-child {
-    margin-top: 0;
+  &:nth-child(1) ~ & {
+    color: #a4a8bd;
   }
-  
-  &:hover {
-    background-color: rgba(51, 93, 129, 0.2);
+
+  &:nth-child(6) ~ & {
+    color: #b8bbcc;
+  }
+
+  &:nth-child(12) ~ & {
+    color: #c4c6d4;
   }
 `;
 
 export const BottomAnchor = styled.div`
   display: block;
-  width: 0; height: 0.5rem;
+  width: 0; height: 0;
 `;

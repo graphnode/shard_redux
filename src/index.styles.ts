@@ -1,21 +1,21 @@
-import { css } from 'styled-components';
+import { css, createGlobalStyle } from 'styled-components';
 
-import Nunito200 from '../../assets/fonts/nunito-v16-latin-200.woff2';
-import Nunito200Italic from '../../assets/fonts/nunito-v16-latin-200italic.woff2';
-import Nunito300 from '../../assets/fonts/nunito-v16-latin-300.woff2';
-import Nunito300Italic from '../../assets/fonts/nunito-v16-latin-300italic.woff2';
-import NunitoRegular from '../../assets/fonts/nunito-v16-latin-regular.woff2';
-import NunitoItalic from '../../assets/fonts/nunito-v16-latin-italic.woff2';
-import Nunito600 from '../../assets/fonts/nunito-v16-latin-600.woff2';
-import Nunito600Italic from '../../assets/fonts/nunito-v16-latin-600italic.woff2';
-import Nunito700 from '../../assets/fonts/nunito-v16-latin-700.woff2';
-import Nunito700Italic from '../../assets/fonts/nunito-v16-latin-700italic.woff2';
-import Nunito800 from '../../assets/fonts/nunito-v16-latin-800.woff2';
-import Nunito800Italic from '../../assets/fonts/nunito-v16-latin-800italic.woff2';
-import Nunito900 from '../../assets/fonts/nunito-v16-latin-900.woff2';
-import Nunito900Italic from '../../assets/fonts/nunito-v16-latin-900italic.woff2';
+import Nunito200 from './assets/fonts/nunito-v16-latin-200.woff2';
+import Nunito200Italic from './assets/fonts/nunito-v16-latin-200italic.woff2';
+import Nunito300 from './assets/fonts/nunito-v16-latin-300.woff2';
+import Nunito300Italic from './assets/fonts/nunito-v16-latin-300italic.woff2';
+import NunitoRegular from './assets/fonts/nunito-v16-latin-regular.woff2';
+import NunitoItalic from './assets/fonts/nunito-v16-latin-italic.woff2';
+import Nunito600 from './assets/fonts/nunito-v16-latin-600.woff2';
+import Nunito600Italic from './assets/fonts/nunito-v16-latin-600italic.woff2';
+import Nunito700 from './assets/fonts/nunito-v16-latin-700.woff2';
+import Nunito700Italic from './assets/fonts/nunito-v16-latin-700italic.woff2';
+import Nunito800 from './assets/fonts/nunito-v16-latin-800.woff2';
+import Nunito800Italic from './assets/fonts/nunito-v16-latin-800italic.woff2';
+import Nunito900 from './assets/fonts/nunito-v16-latin-900.woff2';
+import Nunito900Italic from './assets/fonts/nunito-v16-latin-900italic.woff2';
 
-export default css`
+const fontFaces = css`
   /* nunito-200 - latin */
   @font-face {
     font-family: 'Nunito';
@@ -113,5 +113,29 @@ export default css`
     font-style: italic;
     font-weight: 900;
     src: local('Nunito'), url(${Nunito900Italic}) format('woff2');
+  }
+`;
+
+export const GlobalStyle = createGlobalStyle`
+  ${fontFaces}
+  
+  html, body, #root {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+
+    color: white;
+    background-color: #2C313D;
+
+    margin: 0; padding: 0;
+
+    & svg {
+      fill: currentColor;
+    }
   }
 `;

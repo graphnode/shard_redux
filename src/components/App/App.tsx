@@ -1,11 +1,12 @@
+
+import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+import useDispatch from '../../hooks/useDispatch';
+import { tick } from '../../reducers/game';
+
 import SideMenu from '../SideMenu';
-
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-
-import { ReactComponent as GitHubIcon } from '../../assets/github.svg';
-import { ReactComponent as HomeIcon } from '../../assets/home-outline.svg';
-import { ReactComponent as DatabaseIcon } from '../../assets/database-outline.svg';
-import { ReactComponent as ChatIcon } from '../../assets/chat-outline.svg';
+import Icon from '../Icon';
 
 import HomePage from '../../pages/Home';
 import DatabasePage from '../../pages/Database';
@@ -13,15 +14,25 @@ import ChatPage from '../../pages/Chat';
 
 import * as S from './App.styles';
 
-const App : React.FC = () => (
-  <S.App>
-    <S.GlobalStyle />
 
-    <Router hashType="noslash">
+const App : React.FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const timerId = setInterval(
+      () => { dispatch(tick()); },
+      1000,
+    );
+
+    return () => clearInterval(timerId);
+  });
+
+  return (
+    <S.App>
       <SideMenu options={[
-        { title: 'Home', icon: HomeIcon, path: '/' },
-        { title: 'Database', icon: DatabaseIcon, path: '/database' },
-        { title: 'Chat', icon: ChatIcon, path: '/chat' },
+        { title: 'Home', icon: 'home-outline', path: '/' },
+        { title: 'Database', icon: 'database-outline', path: '/database' },
+        { title: 'Chat', icon: 'chat-outline', path: '/chat' },
       ]} />
 
       <main role="main">
@@ -37,12 +48,12 @@ const App : React.FC = () => (
           </Route>
         </Switch>
       </main>
-    </Router>
 
-    <S.GitHubLink href={process.env.REACT_APP_GITHUB_URL} target="_blank" rel="noreferrer">
-      <GitHubIcon />
-    </S.GitHubLink>
-  </S.App>
-);
+      <S.GitHubLink href={process.env.REACT_APP_GITHUB_URL} target="_blank" rel="noreferrer">
+        <Icon name="github" />
+      </S.GitHubLink>
+    </S.App>
+  );
+};
 
 export default App;

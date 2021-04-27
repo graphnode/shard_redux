@@ -1,24 +1,30 @@
 import React from 'react';
 
+import Icon from '../Icon';
+
 import * as S from './Counter.styles';
 
 export interface CounterProps {
   /** The type of counter. */
-  type: string;
+  name: string;
   /** The value of the counter. */
-  value: string;
+  value: number;
   /** The change in the counter. */
-  change?: string;
-  /** Change the color of the change. */
-  changeStatus?: 'positive' | 'negative';
+  change?: number;
+  /** Icon used for this resource. */
+  icon?: string;
 }
 
-const Counter : React.FC<CounterProps> = ({ type, value, change, changeStatus }) => {
+const Counter : React.FC<CounterProps> = ({ name, value, change, icon }) => {
   return (
     <S.Container>
-      <S.Type>{type}</S.Type>
+      <S.Type>{icon && <Icon name={icon} />}{name}</S.Type>
       <S.Value>{value}</S.Value>
-      <S.Change status={changeStatus}>{change}</S.Change>
+      { !!change && (
+        <S.Change change={change}>
+          { change > 0 && '+'}{change}
+        </S.Change>
+      )}
     </S.Container>
   );
 };

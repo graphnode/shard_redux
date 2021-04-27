@@ -1,10 +1,11 @@
-import { FunctionComponent, SVGProps } from 'react';
+import React from 'react';
+import Icon from '../Icon';
 
 import * as S from './SideMenu.styles';
 
 type OptionItem = {
   title?: string;
-  icon: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string | undefined }>;
+  icon?: string;
   path?: string;
 };
 
@@ -13,7 +14,7 @@ export interface SideMenuProps {
   options?: OptionItem[]
 }
 
-const SideMenu = ({ options } : SideMenuProps) => {
+const SideMenu : React.FC<SideMenuProps> = ({ options }) => {
   if (!options)
     return null;
 
@@ -23,7 +24,7 @@ const SideMenu = ({ options } : SideMenuProps) => {
         { options.map((option, i) => (
           <S.ListItem key={i}>
             <S.NavLink to={option.path || ''} exact={true} activeClassName="active">
-              <option.icon />
+              {option.icon && <Icon name={option.icon} />}
               {option.title && <span>{option.title}</span>}
             </S.NavLink>
           </S.ListItem>

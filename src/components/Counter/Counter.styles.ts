@@ -3,15 +3,21 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-
-  overflow: hidden;
 `;
 
 export const Type = styled.div`
   font-weight: 200;
   font-size: 1.2rem;
   line-height: 2.5rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  svg {
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
 `;
 
 export const Value = styled.div`
@@ -20,19 +26,16 @@ export const Value = styled.div`
   white-space: nowrap;
 `;
 
-const handleChangeStatus = (status : 'positive' | 'negative') => {
-  console.log(status);
-  switch (status) {
-    case 'positive': return '#4FD0D3';
-    case 'negative': return '#4FD0D3';
-  }
+const handleChangeStatus = (change: number) => {
+  if (change > 0) return '#4f7975';
+  if (change < 0) return '#BA4839';
 };
 
-export const Change = styled.div<{ status?: 'positive' | 'negative' }>`
+export const Change = styled.div<{ change: number }>`
   font-weight: 600;
   font-size: 1rem;
 
-  ${({ status }) => status && css`
-    color: ${handleChangeStatus(status)};
+  ${({ change }) => change && css`
+    color: ${handleChangeStatus(change)};
   `}
 `;
