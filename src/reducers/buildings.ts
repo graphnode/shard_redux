@@ -15,6 +15,7 @@ const initialValue = {
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
     .addCase(init, (state, action) => {
+      if (state.buildings) return state;
       return { ...state, buildings: initialValue };
     })
     .addCase(buyBuilding, (state, { payload: { building, price, count = 1 } }) => {

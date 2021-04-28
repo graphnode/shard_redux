@@ -9,6 +9,7 @@ const tick = createAction<number>('game/tick');
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
     .addCase(init, (state) => {
+      if (state.game) return state;
       return { ...state, game: initialState };
     })
     .addCase(tick, (state) => {

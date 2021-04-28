@@ -1,4 +1,5 @@
 import { Action, AnyAction, configureStore, Reducer } from '@reduxjs/toolkit';
+import throttle from 'lodash-es/throttle';
 
 import gameReducer from './reducers/game';
 import resourcesReducer from './reducers/resources';
@@ -33,6 +34,29 @@ const customCombineReducers = <S, A extends Action = AnyAction>(reducers : Reduc
   };
 };
 
+const loadState = () : StoreState | undefined => {
+  try {
+    const serializedState = localStorage.getItem('state');
+    if (serializedState === null) {
+      return undefined;
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
+
+const saveState = (state : StoreState) => {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch {
+    // ignore write errors
+  }
+};
+
+
+
 const store = configureStore<StoreState>({
   reducer: customCombineReducers<StoreState>([
     gameReducer,
@@ -41,8 +65,12 @@ const store = configureStore<StoreState>({
     messagesReducer,
     settingsReducer,
   ]),
-  preloadedState: {},
+  preloadedState: loadState() || {},
 });
+
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}, 10000));
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

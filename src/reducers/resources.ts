@@ -12,6 +12,7 @@ const initialValue = {
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
     .addCase(init, (state, action) => {
+      if (state.resources) return state;
       return { ...state, resources: initialValue };
     });
 });

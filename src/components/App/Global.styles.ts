@@ -25,6 +25,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 200;
     src: local('Nunito'), url(${Nunito200}) format('woff2');
+    font-display: swap;
   }
   /* nunito-200italic - latin */
   @font-face {
@@ -32,6 +33,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 200;
     src: local('Nunito'), url(${Nunito200Italic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-300 - latin */
   @font-face {
@@ -39,6 +41,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 300;
     src: local('Nunito'), url(${Nunito300}) format('woff2');
+    font-display: swap;
   }
   /* nunito-300italic - latin */
   @font-face {
@@ -46,6 +49,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 300;
     src: local('Nunito'), url(${Nunito300Italic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-regular - latin */
   @font-face {
@@ -53,6 +57,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 400;
     src: local('Nunito'), url(${NunitoRegular}) format('woff2');
+    font-display: swap;
   }
   /* nunito-italic - latin */
   @font-face {
@@ -60,6 +65,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 400;
     src: local('Nunito'), url(${NunitoItalic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-600 - latin */
   @font-face {
@@ -67,6 +73,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 600;
     src: local('Nunito'), url(${Nunito600}) format('woff2');
+    font-display: swap;
   }
   /* nunito-600italic - latin */
   @font-face {
@@ -74,6 +81,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 600;
     src: local('Nunito'), url(${Nunito600Italic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-700 - latin */
   @font-face {
@@ -81,6 +89,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 700;
     src: local('Nunito'), url(${Nunito700}) format('woff2');
+    font-display: swap;
   }
   /* nunito-700italic - latin */
   @font-face {
@@ -88,6 +97,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 700;
     src: local('Nunito'), url(${Nunito700Italic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-800 - latin */
   @font-face {
@@ -95,6 +105,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 800;
     src: local('Nunito'), url(${Nunito800}) format('woff2');
+    font-display: swap;
   }
   /* nunito-800italic - latin */
   @font-face {
@@ -102,6 +113,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 800;
     src: local('Nunito'), url(${Nunito800Italic}) format('woff2');
+    font-display: swap;
   }
   /* nunito-900 - latin */
   @font-face {
@@ -109,6 +121,7 @@ const fontFaces = css`
     font-style: normal;
     font-weight: 900;
     src: local('Nunito'), url(${Nunito900}) format('woff2');
+    font-display: swap;
   }
   /* nunito-900italic - latin */
   @font-face {
@@ -116,6 +129,7 @@ const fontFaces = css`
     font-style: italic;
     font-weight: 900;
     src: local('Nunito'), url(${Nunito900Italic}) format('woff2');
+    font-display: swap;
   }
 `;
 

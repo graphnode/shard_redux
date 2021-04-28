@@ -9,6 +9,7 @@ const updateSettings = createAction<Settings>('settings/update');
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
     .addCase(init, (state, action) => {
+      if (state.settings) return state;
       return { ...state, settings: initialSettings };
     })
     .addCase(updateSettings, (state, action) => {

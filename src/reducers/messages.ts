@@ -10,6 +10,7 @@ const initialState = {
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
     .addCase(init, (state, action) => {
+      if (state.messages) return state;
       return { ...state, ...initialState };
     });
 });
