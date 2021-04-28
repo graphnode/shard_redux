@@ -4,9 +4,13 @@ import gameReducer from './reducers/game';
 import resourcesReducer from './reducers/resources';
 import buildingsReducer from './reducers/buildings';
 import messagesReducer from './reducers/messages';
+import settingsReducer from './reducers/settings';
+
+import { Game } from './data/initialGame';
+import { Settings } from './data/initialSettings';
 
 export interface StoreState {
-  tick: number;
+  game: Game;
   messages: string[];
   resources: {
     mass: number;
@@ -15,7 +19,8 @@ export interface StoreState {
   buildings: {
     harvesters: number;
     generators: number;
-  }
+  },
+  settings: Settings;
 }
 
 const customCombineReducers = <S, A extends Action = AnyAction>(reducers : Reducer<S, A>[]) : Reducer<S, A> => {
@@ -34,6 +39,7 @@ const store = configureStore<StoreState>({
     resourcesReducer,
     buildingsReducer,
     messagesReducer,
+    settingsReducer,
   ]),
   preloadedState: {},
 });

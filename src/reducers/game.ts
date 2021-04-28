@@ -1,20 +1,18 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import { StoreState } from '../store';
 
-const init = createAction('@@INIT');
-const tick = createAction('game/tick');
+import initialState from '../data/initialGame';
 
-const initialState = {
-  tick: 0,
-};
+const init = createAction('@@INIT');
+const tick = createAction<number>('game/tick');
 
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
-    .addCase(init, (state, action) => {
-      return { ...state, ...initialState };
+    .addCase(init, (state) => {
+      return { ...state, game: initialState };
     })
-    .addCase(tick, (state, action) => {
-      state.tick++;
+    .addCase(tick, (state) => {
+      state.game.tick++;
 
       state.resources.energy += state.buildings.generators * 10;
       state.resources.mass += state.buildings.harvesters * 1;
