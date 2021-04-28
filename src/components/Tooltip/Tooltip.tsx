@@ -14,10 +14,6 @@ const Tooltip : React.FC<TooltipProps> = ({ content, children, offset = { left: 
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const onMouseOver = (e : React.MouseEvent) => { setVisible(true); console.log('mo'); };
-  const onMouseMove = (e : React.MouseEvent) => setPosition({ x: e.pageX + offset.left, y: e.pageY + offset.top });
-  const onMouseLeave = (e : React.MouseEvent) => setVisible(false);
-
   if (!content)
     return null;
 
@@ -25,6 +21,19 @@ const Tooltip : React.FC<TooltipProps> = ({ content, children, offset = { left: 
     console.error('Unable to set tooltip for component.');
     return (children as React.ReactElement);
   }
+
+  const onMouseOver = (e : React.MouseEvent) => {
+    setVisible(true);
+    children.props?.onMouseOver?.(e);
+  };
+  const onMouseMove = (e : React.MouseEvent) => {
+    setPosition({ x: e.pageX + offset.left, y: e.pageY + offset.top });
+    children.props?.onMouseMove?.(e);
+  };
+  const onMouseLeave = (e : React.MouseEvent) => {
+    setVisible(false);
+    children.props?.onMouseLeave?.(e);
+  };
 
   return (
     <>

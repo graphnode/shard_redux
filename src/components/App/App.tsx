@@ -8,9 +8,7 @@ import { tick } from '../../reducers/game';
 import SideMenu from '../SideMenu';
 import Icon from '../Icon';
 
-import HomePage from '../../pages/Home';
-import DatabasePage from '../../pages/Database';
-import ChatPage from '../../pages/Chat';
+import HubPage from '../../pages/Hub';
 
 import * as S from './App.styles';
 
@@ -30,21 +28,16 @@ const App : React.FC = () => {
   return (
     <S.App>
       <SideMenu options={[
-        { title: 'Home', icon: 'home-outline', path: '/' },
+        { title: 'Hub', icon: 'home-outline', path: '/' },
+        { title: 'Research', icon: 'flask-outline', path: '/research' },
         { title: 'Database', icon: 'database-outline', path: '/database' },
-        { title: 'Chat', icon: 'chat-outline', path: '/chat' },
+        { title: 'Settings', icon: 'tune-variant', path: '/settings' },
       ]} />
 
       <main role="main">
         <Switch>
-          <Route path="/database">
-            <DatabasePage />
-          </Route>
-          <Route path="/chat">
-            <ChatPage />
-          </Route>
-          <Route path="/">
-            <HomePage />
+          <Route path="/" exact>
+            <HubPage />
           </Route>
         </Switch>
       </main>
