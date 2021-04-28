@@ -21,6 +21,7 @@ export const Item = styled.li`
 
     &:disabled {
       cursor: not-allowed;
+      pointer-events: auto;
     }
   }
 `;

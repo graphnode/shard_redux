@@ -16,10 +16,10 @@ const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
     .addCase(tick, (state, action) => {
       state.tick++;
 
-      state.resources.energy -= 1;
+      state.resources.energy += state.buildings.generators * 10;
+      state.resources.mass += state.buildings.harvesters * 1;
 
-      state.resources.energy += state.buildings.generators;
-      state.resources.mass += state.buildings.harvesters;
+      state.resources.energy -= state.buildings.harvesters * 1;
 
       return state;
     });
