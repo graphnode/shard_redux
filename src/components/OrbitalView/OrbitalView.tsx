@@ -1,16 +1,13 @@
 import React, { Suspense } from 'react';
 import { BackSide, Texture, TextureLoader } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { Canvas, extend, MeshProps, SceneProps, useLoader, useThree } from '@react-three/fiber';
+import { Canvas, MeshProps, SceneProps, useLoader } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 
 import earth_daymap from '../../assets/2k_earth_daymap.jpg';
 import earth_normal_map from '../../assets/2k_earth_normal_map.png';
 import earth_roughness_map from '../../assets/2k_earth_roughness_map.png';
 import earth_clouds from '../../assets/2k_earth_clouds.jpg';
 import galaxy_starfield from '../../assets/galaxy_starfield.png';
-
-
-extend({ OrbitControls });
 
 export interface OrbitalViewProps {
 
@@ -56,11 +53,13 @@ const Planet = (props : MeshProps) => {
 };
 
 const Scene = (props : SceneProps) => {
-  const { camera, gl: { domElement } } = useThree();
-
   return (
     <>
-      <orbitControls args={[camera, domElement]} />
+      <OrbitControls
+        enablePan={false} enableZoom={false}
+        enableRotate={true} autoRotate={true}
+        autoRotateSpeed={0.25}
+      />
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Suspense fallback={null}>
