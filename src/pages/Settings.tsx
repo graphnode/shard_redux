@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
 
+import { init } from '../reducers/game';
 import { updateSettings } from '../reducers/settings';
 
 const StyledPage = styled.div`
@@ -49,6 +50,12 @@ const SettingsPage : React.FC = () => {
   const dispatch = useDispatch();
   const settings = useSelector((state) => state.settings);
 
+  const wipeSave = (e : React.MouseEvent) => {
+    e.preventDefault();
+    dispatch(init(true));
+    localStorage.removeItem('state');
+  };
+
   return (
     <StyledPage>
       <StyledBox style={{ gridColumn: '1 / 3', gridRow: '1 / 6' }}>
@@ -65,6 +72,8 @@ const SettingsPage : React.FC = () => {
             value={settings.updateRate}
             onChange={(e) => dispatch(updateSettings({ ...settings, updateRate: parseInt(e.target.value, 10) }))}
           />
+          <label htmlFor="save">Delete all your progress</label>
+          <button onClick={wipeSave}>Wipe Save</button>
         </form>
       </StyledBox>
     </StyledPage>

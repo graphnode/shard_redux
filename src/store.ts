@@ -55,8 +55,6 @@ const saveState = (state : StoreState) => {
   }
 };
 
-
-
 const store = configureStore<StoreState>({
   reducer: customCombineReducers<StoreState>([
     gameReducer,

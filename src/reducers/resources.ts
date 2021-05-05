@@ -1,7 +1,8 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import { StoreState } from '../store';
 
-const init = createAction('@@INIT');
+import { init } from './game';
+
 const changeValue = createAction<{ resource: keyof StoreState['resources'], value: number }>('resources/changeValue');
 
 const initialValue = {
@@ -11,8 +12,8 @@ const initialValue = {
 
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
-    .addCase(init, (state, action) => {
-      if (state.resources) return state;
+    .addCase(init, (state, { payload }) => {
+      if (state.resources && !payload) return state;
       return { ...state, resources: initialValue };
     });
 });

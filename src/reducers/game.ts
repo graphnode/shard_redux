@@ -3,13 +3,13 @@ import { StoreState } from '../store';
 
 import initialState from '../data/initialGame';
 
-const init = createAction('@@INIT');
+const init = createAction<boolean>('@@INIT');
 const tick = createAction<number>('game/tick');
 
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
-    .addCase(init, (state) => {
-      if (state.game) return state;
+    .addCase(init, (state, { payload }) => {
+      if (state.game && !payload) return state;
       return { ...state, game: initialState };
     })
     .addCase(tick, (state) => {
@@ -24,6 +24,6 @@ const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
     });
 });
 
-export { tick };
+export { init, tick };
 
 export default reducer;

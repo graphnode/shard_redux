@@ -1,7 +1,7 @@
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import { StoreState } from '../store';
 
-const init = createAction('@@INIT');
+import { init } from './game';
 
 const initialState = {
   messages: ['Welcome to shard.'],
@@ -9,8 +9,8 @@ const initialState = {
 
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
-    .addCase(init, (state, action) => {
-      if (state.messages) return state;
+    .addCase(init, (state, { payload }) => {
+      if (state.messages && !payload) return state;
       return { ...state, ...initialState };
     });
 });

@@ -1,9 +1,10 @@
 import { createAction, createReducer } from '@reduxjs/toolkit';
 import { StoreState } from '../store';
 
+import { init } from './game';
+
 type BuildingPayload = { building: keyof StoreState['buildings'], price: number, count?: number };
 
-const init = createAction('@@INIT');
 const buyBuilding = createAction<BuildingPayload>('buildings/buy');
 const sellBuilding = createAction<BuildingPayload>('buildings/sell');
 
@@ -14,8 +15,8 @@ const initialValue = {
 
 const reducer = createReducer<StoreState>({} as StoreState, (builder) => {
   builder
-    .addCase(init, (state, action) => {
-      if (state.buildings) return state;
+    .addCase(init, (state, { payload }) => {
+      if (state.buildings && !payload) return state;
       return { ...state, buildings: initialValue };
     })
     .addCase(buyBuilding, (state, { payload: { building, price, count = 1 } }) => {
