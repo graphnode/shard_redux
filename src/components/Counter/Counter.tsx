@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Icon from '../Icon';
-
 import * as S from './Counter.styles';
 
 export interface CounterProps {
@@ -12,19 +10,21 @@ export interface CounterProps {
   /** The change in the counter. */
   change?: number;
   /** Icon used for this resource. */
-  icon?: string;
+  icon: string;
+  /** Icon color. */
+  iconColor?: string;
 }
 
-const Counter : React.FC<CounterProps> = ({ name, value, change, icon }) => {
+const Counter : React.FC<CounterProps> = ({ name, value, change, icon, iconColor, ...props }) => {
   return (
-    <S.Container>
-      <S.Type>{icon && <Icon name={icon} />}{name}</S.Type>
-      <S.Value>{value}</S.Value>
-      { !!change && (
+    <S.Container {...props}>
+      <S.Icon name={icon} style={{ color: iconColor }} />
+      <S.Values>
+        <S.Value>{value}</S.Value>
         <S.Change change={change}>
-          { change > 0 && '+'}{change}
+          { change && change > 0 && '+'}{change || ' '}
         </S.Change>
-      )}
+      </S.Values>
     </S.Container>
   );
 };

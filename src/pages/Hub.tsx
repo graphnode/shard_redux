@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BuildingList from '../components/BuildingList';
-import Counter from '../components/Counter';
 import Feed from '../components/Feed';
-import Tooltip from '../components/Tooltip';
 
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
@@ -51,54 +49,19 @@ const StyledBox = styled.div`
 `;
 
 const HomePage : React.FC = () => {
-  const { energy, mass } = useSelector((state) => state.resources);
+  const { mass } = useSelector((state) => state.resources);
   const { generators, harvesters } = useSelector((state) => state.buildings);
-
-  const energyChange = useSelector((state) => state.buildings.generators * 10 - state.buildings.harvesters * 1);
-  const massChange = useSelector((state) => state.buildings.harvesters);
 
   const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
 
   return (
     <StyledPage>
-      <Tooltip content={<>
-        <h1>Mass</h1>
-        <p>This is the resource used to construct buildings.</p>
-        <hr />
-        <figure>
-          <blockquote>"Energy is liberated matter, matter is energy waiting to happen."</blockquote>
-          <figcaption>
-            &mdash; Bill Bryson, <cite>A Short History of Nearly Everything</cite>
-          </figcaption>
-        </figure>
-      </>}>
-        <StyledBox>
-          <Counter name="Mass" icon="wall" value={mass} change={massChange} />
-        </StyledBox>
-      </Tooltip>
-
-      <Tooltip content={<>
-        <h1>Energy</h1>
-        <p>This is the resource used to power buildings.</p>
-        <hr />
-        <figure>
-          <blockquote>"Energy is liberated matter, matter is energy waiting to happen."</blockquote>
-          <figcaption>
-            &mdash; Bill Bryson, <cite>A Short History of Nearly Everything</cite>
-          </figcaption>
-        </figure>
-      </>}>
-        <StyledBox>
-          <Counter name="Energy" icon="lightning-bolt" value={energy} change={energyChange} />
-        </StyledBox>
-      </Tooltip>
-
       <StyledBox style={{ gridColumn: '3 / 5', gridRow: '1 / 6' }}>
         <Feed messages={messages} />
       </StyledBox>
 
-      <StyledBox style={{ gridColumn: '1 / 3', gridRow: '2 / 6', flexDirection: 'column' }}>
+      <StyledBox style={{ gridColumn: '1 / 3', gridRow: '1 / 6', flexDirection: 'column' }}>
         <BuildingList items={[
           { name: 'Generator', description: 'Generates energy.', price: 100, count: generators,
             onBuy:() => dispatch(buyBuilding({ building: 'generators', price: 100 })),

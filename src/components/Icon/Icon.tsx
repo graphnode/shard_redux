@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export interface IconProps {
+export interface IconProps extends React.HTMLAttributes<SVGElement> {
   name: string;
 }
 
