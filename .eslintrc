@@ -11,7 +11,7 @@
     "semi": "error",
     "semi-style": ["error", "last"],
     "comma-dangle": ["error", "always-multiline"],
-    "max-len": ["warn", { "code": 120 }],
+    "max-len": ["warn", { "code": 160 }],
     "object-curly-spacing": ["warn", "always"],
     "eol-last": ["warn", "always"],
     "react-hooks/rules-of-hooks": "error",

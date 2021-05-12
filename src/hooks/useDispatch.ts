@@ -1,5 +1,5 @@
 import { useDispatch as useBaseDispatch } from 'react-redux';
-import type { AppDispatch } from '../store';
+import type { AppDispatch } from '../data/store';
 
 const useDispatch = () => useBaseDispatch<AppDispatch>();
 

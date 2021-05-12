@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
 
-import { init } from '../reducers/game';
-import { updateSettings } from '../reducers/settings';
+import { init } from '../data/reducers/game';
+import { updateSettings } from '../data/reducers/settings';
 
 const StyledPage = styled.div`
   flex: 1;

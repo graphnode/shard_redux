@@ -3,20 +3,17 @@ import Icon from '../Icon';
 
 import * as S from './SideMenu.styles';
 
-type OptionItem = {
-  title?: string;
-  icon?: string;
-  path?: string;
-};
-
-export interface SideMenuProps {
-  /** The options of the menu. */
-  options?: OptionItem[]
-}
-
-const SideMenu : React.FC<SideMenuProps> = ({ options }) => {
-  if (!options)
-    return null;
+const SideMenu : React.FC = () => {
+  const options = [
+    { title: 'Status', icon: 'home-outline', path: '/' },
+    { title: 'Research', icon: 'flask-outline', path: '/research' },
+    {
+      title: 'Database',
+      icon: 'database-outline',
+      path: '/database',
+    },
+    { title: 'Settings', icon: 'tune-variant', path: '/settings' },
+  ];
 
   return (
     <S.Container>

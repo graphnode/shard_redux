@@ -16,7 +16,7 @@ import Nunito800Italic from '../../assets/fonts/nunito-v16-latin-800italic.woff2
 import Nunito900 from '../../assets/fonts/nunito-v16-latin-900.woff2';
 import Nunito900Italic from '../../assets/fonts/nunito-v16-latin-900italic.woff2';
 
-import { Settings } from '../../data/initialSettings';
+import { Settings } from '../../data/reducers/settings';
 
 const fontFaces = css`
   /* nunito-200 - latin */

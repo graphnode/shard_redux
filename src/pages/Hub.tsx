@@ -7,7 +7,7 @@ import Feed from '../components/Feed';
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
 
-import { buyBuilding, sellBuilding } from '../reducers/buildings';
+import { buyBuilding, sellBuilding } from '../data/reducers/buildings';
 
 const StyledPage = styled.div`
   flex: 1;
