@@ -7,6 +7,8 @@ import useSelector from '../hooks/useSelector';
 import { init } from '../data/reducers/game';
 import { updateSettings } from '../data/reducers/settings';
 
+import Button from '../components/Button';
+
 const StyledPage = styled.div`
   flex: 1;
   display: grid;
@@ -73,7 +75,7 @@ const SettingsPage : React.FC = () => {
             onChange={(e) => dispatch(updateSettings({ ...settings, updateRate: parseInt(e.target.value, 10) }))}
           />
           <label htmlFor="save">Delete all your progress</label>
-          <button onClick={wipeSave}>Wipe Save</button>
+          <Button onClick={wipeSave}>Wipe Save</Button>
         </form>
       </StyledBox>
     </StyledPage>

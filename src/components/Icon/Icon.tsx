@@ -8,7 +8,10 @@ const Icon : React.FC<IconProps> =  ({ name, ...props }) => {
   const [iconModule, setIconModule] = useState<any>(null);
 
   useEffect(() => {
-    import(`!!@svgr/webpack?-svgo,+titleProp,+ref!../../assets/${name}.svg`).then((module) => {
+    import(
+      /* webpackMode: "eager" */
+      `!!@svgr/webpack?-svgo,+titleProp,+ref!../../assets/${name}.svg`
+    ).then((module) => {
       /* Persist data in state */
       setIconModule(module);
     }).catch((error) => {

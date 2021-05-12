@@ -1,4 +1,6 @@
+import { Provider } from 'react-redux';
 import { GlobalStyle } from '../src/components/App/Global.styles';
+import store from '../src/data/store';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,9 +22,9 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <Story />
-    </>
+    </Provider>
   ),
 ];

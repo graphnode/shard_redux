@@ -2,6 +2,7 @@ import React from 'react';
 
 import Icon from '../Icon';
 import Tooltip from '../Tooltip';
+import Button from '../Button';
 
 import * as S from './BuildingList.styles';
 
@@ -32,8 +33,8 @@ const BuildingList : React.FC<BuildingListProps> = ({ items }) => {
             <S.ItemName>{name}</S.ItemName>
             <S.ItemPrice>{price}<Icon name="wall" /></S.ItemPrice>
             <S.ItemCount>{count} units</S.ItemCount>
-            <button onClick={onBuy} disabled={!canBuy}>Build</button>
-            <button onClick={onSell} disabled={!canSell}>Recycle</button>
+            <Button onClick={onBuy} disabled={!canBuy}>Build</Button>
+            <Button onClick={onSell} disabled={!canSell}>Recycle</Button>
           </S.Item>
         </Tooltip>
       ))}
