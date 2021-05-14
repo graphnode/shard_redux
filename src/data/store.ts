@@ -1,6 +1,5 @@
 import { createStore, Store, AnyAction, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import throttle from 'lodash-es/throttle';
 
 import gameReducer from './reducers/game';
 import resourcesReducer from './reducers/resources';
@@ -41,9 +40,10 @@ const store : Store<StoreState, AnyAction> = createStore(
   ),
 );
 
-store.subscribe(throttle(() => {
+setInterval(() => {
   saveState(store.getState());
-}, 10000));
+  store.dispatch({ type: '@@SAVE' });
+}, 30000);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
