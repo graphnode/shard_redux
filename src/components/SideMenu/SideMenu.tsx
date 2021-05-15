@@ -7,11 +7,8 @@ const SideMenu : React.FC = () => {
   const options = [
     { title: 'Status', icon: 'home-outline', path: '/' },
     { title: 'Research', icon: 'flask-outline', path: '/research' },
-    {
-      title: 'Database',
-      icon: 'database-outline',
-      path: '/database',
-    },
+    { title: 'Database', icon: 'database-outline', path: '/database' },
+    { title: 'Logs', icon: 'script-text-outline', path: '/logs' },
     { title: 'Settings', icon: 'tune-variant', path: '/settings' },
   ];
 

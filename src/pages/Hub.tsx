@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BuildingList from '../components/BuildingList';
-import Feed from '../components/Feed';
 
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
@@ -52,15 +51,10 @@ const HomePage : React.FC = () => {
   const { mass } = useSelector((state) => state.resources);
   const { generators, harvesters } = useSelector((state) => state.buildings);
 
-  const messages = useSelector((state) => state.messages);
   const dispatch = useDispatch();
 
   return (
     <StyledPage>
-      <StyledBox style={{ gridColumn: '3 / 5', gridRow: '1 / 6' }}>
-        <Feed messages={messages} />
-      </StyledBox>
-
       <StyledBox style={{ gridColumn: '1 / 3', gridRow: '1 / 6', flexDirection: 'column' }}>
         <BuildingList items={[
           { name: 'Generator', description: 'Generates energy.', price: 100, count: generators,

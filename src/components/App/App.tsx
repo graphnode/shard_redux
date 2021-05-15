@@ -12,6 +12,7 @@ import useSelector from '../../hooks/useSelector';
 import TopBar from '../TopBar';
 import SideMenu from '../SideMenu';
 import HubPage from '../../pages/Hub';
+import LogsPage from '../../pages/Logs';
 import SettingsPage from '../../pages/Settings';
 
 import * as S from './App.styles';
@@ -49,6 +50,9 @@ const App: React.FC = () => {
             <Switch>
               <Route path="/" exact>
                 <HubPage />
+              </Route>
+              <Route path="/logs" exact>
+                <LogsPage />
               </Route>
               <Route path="/settings" exact>
                 <SettingsPage />
