@@ -3,12 +3,10 @@ import { createAction, createReducer, PayloadAction } from '../utilities';
 
 export interface Settings {
   animations: 'on' | 'off';
-  updateRate: number;
 }
 
 const initialState : Settings = {
   animations: 'on',
-  updateRate: 100,
 };
 
 const updateSettings = createAction<Settings>('UPDATE_SETTINGS');

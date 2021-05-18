@@ -1,6 +1,6 @@
 import { Action } from 'redux';
 import { StoreState } from '../store';
-import { createAction, createReducer } from '../utilities';
+import { createReducer } from '../utilities';
 export interface Game {
   tick: number;
   tickSpeed: number;
@@ -10,9 +10,6 @@ const initialState : Game = {
   tick: 0,
   tickSpeed: 1000,
 };
-
-const init = createAction<boolean | undefined>('@@INIT');
-const tick = createAction<{ delta: number }>('GAME_TICK');
 
 const reducer = createReducer<StoreState, Action<string>>({
   '@@INIT'(state) {
@@ -26,7 +23,5 @@ const reducer = createReducer<StoreState, Action<string>>({
     state.resources.energy -= state!.buildings.harvesters * 1;
   },
 });
-
-export { init, tick };
 
 export default reducer;

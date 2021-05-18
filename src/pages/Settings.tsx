@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import useDispatch from '../hooks/useDispatch';
 import useSelector from '../hooks/useSelector';
 
-import { init } from '../data/reducers/game';
 import { updateSettings } from '../data/reducers/settings';
 
 import Button from '../components/Button';
@@ -54,8 +53,8 @@ const SettingsPage : React.FC = () => {
 
   const wipeSave = (e : React.MouseEvent) => {
     e.preventDefault();
-    dispatch(init(true));
     localStorage.removeItem('state');
+    window.location.reload();
   };
 
   return (
@@ -68,12 +67,6 @@ const SettingsPage : React.FC = () => {
             <option value="on">Enabled</option>
             <option value="off">Disabled</option>
           </select>
-          <label htmlFor="updateRate">Update rate: ({settings.updateRate}ms)</label>
-          <input type="range"
-            name="updateRate" min="33" max="200"
-            value={settings.updateRate}
-            onChange={(e) => dispatch(updateSettings({ ...settings, updateRate: parseInt(e.target.value, 10) }))}
-          />
           <label htmlFor="save">Delete all your progress</label>
           <Button onClick={wipeSave}>Wipe Save</Button>
         </form>
