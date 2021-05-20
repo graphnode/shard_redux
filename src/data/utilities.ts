@@ -17,7 +17,9 @@ export const combineReducers = <S, A extends Action = any>(reducers : Reducer<S,
 };
 
 export const createAction = <P = void, T = string>(type: T) => {
-  return (payload: P) : PayloadAction<P, T> => ({ type, payload });
+  const fn = (payload: P) : PayloadAction<P, T> => ({ type, payload });
+  fn.toString = () => type;
+  return fn;
 };
 
 export const createReducer = <S, A extends Action = any>(obj : {[key: string]: (state : S, action : A) => void}) : Reducer<S, A> => {

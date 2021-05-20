@@ -16,7 +16,8 @@ const reducer = createReducer<StoreState, PayloadAction<Settings>>({
     if (!state.settings)
       state.settings = initialState;
   },
-  'UPDATE_SETTINGS'(state, { payload }) {
+  // @ts-expect-error 2464
+  [updateSettings](state, { payload }) {
     state.settings = payload;
   },
 });
